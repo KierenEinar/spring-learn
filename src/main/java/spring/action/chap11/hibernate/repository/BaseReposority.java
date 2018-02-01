@@ -1,5 +1,7 @@
 package spring.action.chap11.hibernate.repository;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import java.io.Serializable;
 
 /**
@@ -8,7 +10,7 @@ import java.io.Serializable;
 public interface BaseReposority<ID extends Serializable, Entity> {
 
     Entity findOne (ID id);
-
+    
     void insert (Entity entity);
 
 }

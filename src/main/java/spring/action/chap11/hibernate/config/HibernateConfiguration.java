@@ -1,6 +1,7 @@
 package spring.action.chap11.hibernate.config;
 
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,8 +19,8 @@ import java.util.Properties;
  */
 @Configuration
 @PropertySource("classpath:conf/hibernate-config.properties")
+@EnableTransactionManagement
 @Import(DataSourceConfiguration.class)
-@EnableTransactionManagement(proxyTargetClass = true)
 public class HibernateConfiguration {
 
     @Value("${packageToScan}")
@@ -44,7 +45,7 @@ public class HibernateConfiguration {
         return localSessionFactoryBean;
     }
 
-    @Bean (name="transactionManager")
+    @Bean
     public HibernateTransactionManager hibernateTransactionManager(SessionFactory sessionFactory) {
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(sessionFactory);
