@@ -1,6 +1,7 @@
 package spring.action.chap11.hibernate.config;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AvailableSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -54,8 +55,8 @@ public class HibernateConfiguration {
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.dialect", dialact);
-        properties.setProperty("hibernate.current_session_context_class", currentSessionContextClass);
+        properties.setProperty(AvailableSettings.DIALECT, dialact);
+        properties.setProperty(AvailableSettings.CURRENT_SESSION_CONTEXT_CLASS, currentSessionContextClass);
         return properties;
     }
 
